@@ -1,0 +1,24 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+<h1>Защитен вход</h1>
+
+<div class="safe">
+    Проверката се извършва чрез check_password() спрямо хеширана стойност.
+</div>
+
+{% if error %}
+    <div class="error">{{ error }}</div>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    <label>Потребителско име:</label><br>
+    <input type="text" name="username"><br>
+
+    <label>Парола:</label><br>
+    <input type="password" name="password"><br>
+
+    <button type="submit">Вход</button>
+</form>
+{% endblock %}

