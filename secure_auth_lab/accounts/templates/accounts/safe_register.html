@@ -1,0 +1,28 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+<h1>Защитена регистрация</h1>
+
+<div class="safe">
+    Тази форма съхранява паролата като хеш чрез make_password().
+</div>
+
+{% if error %}
+    <div class="error">{{ error }}</div>
+{% endif %}
+
+{% if success %}
+    <div class="success">{{ success }}</div>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    <label>Потребителско име:</label><br>
+    <input type="text" name="username"><br>
+
+    <label>Парола:</label><br>
+    <input type="password" name="password"><br>
+
+    <button type="submit">Регистрация</button>
+</form>
+{% endblock %}

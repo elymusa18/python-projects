@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Insecure Search</title>
+</head>
+<body>
+  <h2>Insecure Search</h2>
+
+  <form method="get">
+    <label>Title:</label>
+    <input name="title" type="text" value="{{ title }}" />
+    <button type="submit">Search</button>
+  </form>
+
+  <h3>Results</h3>
+  <ul>
+    {% for r in results %}
+      <li>
+        <b>{{ r.1 }}</b><br>
+        {{ r.2 }}
+      </li>
+    {% empty %}
+      <li>No results</li>
+    {% endfor %}
+  </ul>
+
+  <p><a href="/">Home</a></p>
+</body>
+</html>

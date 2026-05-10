@@ -1,0 +1,32 @@
+{% extends 'uploader/base.html' %}
+
+{% block title %}Уязвимо качване{% endblock %}
+
+{% block content %}
+    <h1>Уязвимо качване на файл</h1>
+
+    <div class="box">
+        Тази версия не прилага достатъчни проверки върху качвания файл.
+        Опитай да качиш различни типове файлове, включително файлове,
+        които не са изображения.
+    </div>
+
+   <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="file">
+    <button type="submit">Качи файл</button>
+</form>
+
+{% if file_url %}
+    <p>Файлът е качен успешно:</p>
+    <a href="{{ file_url }}" target="_blank">Отвори файла</a>
+{% endif %}
+
+    {% if uploaded_file_name %}
+        <p><strong>Качен файл:</strong> {{ uploaded_file_name }}</p>
+    {% endif %}
+
+    {% if uploaded_file_url %}
+        <p><a href="{{ uploaded_file_url }}" target="_blank">Отвори качения файл</a></p>
+    {% endif %}
+{% endblock %}

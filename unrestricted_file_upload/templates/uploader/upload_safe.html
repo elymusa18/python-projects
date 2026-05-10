@@ -1,0 +1,36 @@
+{% extends 'uploader/base.html' %}
+
+{% block title %}Защитено качване{% endblock %}
+
+{% block content %}
+    <h1>Защитено качване на файл</h1>
+
+    <div class="box">
+        Тази версия позволява качване само на изображения с позволено разширение,
+        подходящ MIME type и размер до 2 MB. Освен това файлът се записва с ново,
+        безопасно генерирано име.
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file">Избери изображение:</label><br>
+        <input type="file" name="file" id="file" required><br>
+        <button type="submit">Качи файл</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if message %}
+        <p class="message">{{ message }}</p>
+    {% endif %}
+
+    {% if uploaded_file_name %}
+        <p><strong>Качен файл:</strong> {{ uploaded_file_name }}</p>
+    {% endif %}
+
+  {% if file_url %}
+    <p>Файлът е качен успешно:</p>
+    <a href="{{ file_url }}" target="_blank">Отвори файла</a>
+{% endif %}

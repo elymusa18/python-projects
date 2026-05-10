@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Unrestricted File Upload Lab{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.6;
+            background: #f7f7f7;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.08);
+        }
+
+        h1, h2 {
+            color: #222;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0b63c9;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .nav {
+            margin-bottom: 20px;
+        }
+
+        .nav a {
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .message {
+            color: green;
+            margin-top: 15px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 15px;
+        }
+
+        .box {
+            background: #f1f4f8;
+            border-left: 4px solid #0b63c9;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        input[type="file"] {
+            margin: 15px 0;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            background: #0b63c9;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #094f9f;
+        }
+
+        code {
+            background: #efefef;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="{% url 'home' %}">Начало</a>
+            <a href="{% url 'upload_vulnerable' %}">Уязвимо качване</a>
+            <a href="{% url 'upload_safe' %}">Защитено качване</a>
+        </div>
+
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
